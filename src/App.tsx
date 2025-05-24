@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/film' element={<FilmPage />} />
         <Route path='/daftar-saya' element={<DaftarSaya />} />
       </Routes>
-      {isMobile ? <MobileFooter /> : <DesktopFooter />}
+      {isMobile && !isAuthPage ? <MobileFooter /> : !isAuthPage && <DesktopFooter />}
     </>
   )
 }
