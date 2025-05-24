@@ -11,7 +11,11 @@ const Profile = () => {
   }
 
   return (
-    <Button type='button' onClick={handleClick} classname='relative flex items-center gap-1 md:gap-2'>
+    <Button
+      type='button'
+      onClick={handleClick}
+      classname='relative flex items-center gap-1 md:gap-2'
+    >
       <img src='/profile.png' alt='image' className='w-5 h-5 rounded-full md:w-10 md:h-10' />
       <svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
         <path
@@ -48,7 +52,7 @@ const Profile = () => {
           Profil Saya
         </NavLink>
         <NavLink
-          to='series'
+          to='register'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
@@ -67,7 +71,7 @@ const Profile = () => {
           Ubah Premium
         </NavLink>
         <NavLink
-          to='film'
+          to='login'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
