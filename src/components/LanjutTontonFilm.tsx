@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRef, useState } from 'react'
 import { type FilmItem } from '../data/Film'
 import ScrollButton from './Elements/Button/ScrollButton'
@@ -12,7 +11,7 @@ type LanjutTontonFilmProps = {
 
 const LanjutTontonFilm = ({ subTitle, data }: LanjutTontonFilmProps) => {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState<boolean>(false)
+  const [isHovered] = useState<boolean>(false)
   const { isMobile } = useDevice()
 
   const scrollLeft = () => {
