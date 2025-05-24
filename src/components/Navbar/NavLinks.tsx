@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, NavLink } from 'react-router'
 
 const links = [
   {
@@ -17,7 +17,7 @@ const links = [
 
 const NavLinks = () => {
   return (
-    <nav className='flex items-center gap-3 md:gap-20'>
+    <nav className='flex items-center gap-3 md:gap-[72px]'>
       <Link to='/' className='flex items-center justify-center gap-1'>
         <svg
           width='18'
@@ -35,9 +35,17 @@ const NavLinks = () => {
         <h3 className='font-londrina text-[32px] text-white hidden md:inline-block'>CHILL</h3>
       </Link>
       {links.map((link, i) => (
-        <Link key={i} to={link.path} className='font-medium text-[10px] text-white md:text-lg font-lato'>
+        <NavLink
+          key={i}
+          to={link.path}
+          className={({ isActive }) =>
+            isActive
+              ? 'font-bold text-[10px] text-white md:text-lg font-lato py-1 px-2 bg-[#3254FF] rounded'
+              : 'font-medium text-[10px] text-white md:text-lg font-lato transition-all duration-300 py-1 px-2 hover:bg-[#3254FF] rounded'
+          }
+        >
           {link.name}
-        </Link>
+        </NavLink>
       ))}
     </nav>
   )

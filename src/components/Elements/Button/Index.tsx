@@ -2,13 +2,15 @@ const Button = ({
   children,
   type,
   classname,
+  onClick,
 }: {
   children: React.ReactNode
   type: 'submit' | 'reset' | 'button'
   classname: string
+  onClick?: () => void
 }) => {
   return (
-    <button type={type} className={classname}>
+    <button onClick={onClick} type={type} className={classname}>
       {children}
     </button>
   )
