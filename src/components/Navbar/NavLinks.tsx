@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router'
+import { useDevice } from '../../hooks/useDevice'
 
 const links = [
   {
@@ -16,6 +17,8 @@ const links = [
 ]
 
 const NavLinks = () => {
+  const { isMobile } = useDevice()
+
   return (
     <nav className='flex items-center gap-3 md:gap-[72px]'>
       <Link to='/' className='flex items-center justify-center gap-1'>
@@ -47,6 +50,23 @@ const NavLinks = () => {
           {link.name}
         </NavLink>
       ))}
+      {isMobile && (
+        <div className='flex justify-between items-center text-base font-medium text-white font-lato text-[10px] px-2 gap-1'>
+          <span>Genre</span>
+          <svg
+            width='8'
+            height='8'
+            viewBox='0 0 8 13'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M0.589844 11.33L5.16984 6.75L0.589844 2.16L1.99984 0.75L7.99984 6.75L1.99984 12.75L0.589844 11.33Z'
+              fill='white'
+            />
+          </svg>
+        </div>
+      )}
     </nav>
   )
 }

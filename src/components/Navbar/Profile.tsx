@@ -52,7 +52,7 @@ const Profile = () => {
           Profil Saya
         </NavLink>
         <NavLink
-          to='register'
+          to='/register'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
@@ -71,7 +71,7 @@ const Profile = () => {
           Ubah Premium
         </NavLink>
         <NavLink
-          to='login'
+          to='/login'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
