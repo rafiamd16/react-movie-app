@@ -94,15 +94,21 @@ const HeroSection = ({
             <div className='flex rounded-lg item-center bg-[#22282A] w-[392px] absolute top-46 left-20 z-20 text-white'>
               <ul className='w-1/2 h-full'>
                 {leftGenreList.map((genre, i) => (
-                  <li key={i} className='px-3 py-2 rounded-tl-lg hover:bg-[#3D4142] transition-all'>
-                    {genre.name}
+                  <li
+                    key={i}
+                    className='px-3 py-2 rounded-tl-lg hover:bg-[#3D4142] transition-all cursor-pointer'
+                  >
+                    <a href='#'>{genre.name}</a>
                   </li>
                 ))}
               </ul>
               <ul className='w-1/2 h-full'>
                 {rightGenreList.map((genre, i) => (
-                  <li key={i} className='px-3 py-2 rounded-tr-lg hover:bg-[#3D4142] transition-all'>
-                    {genre.name}
+                  <li
+                    key={i}
+                    className='px-3 py-2 rounded-tr-lg hover:bg-[#3D4142] transition-all cursor-pointer'
+                  >
+                    <a href='#'>{genre.name}</a>
                   </li>
                 ))}
               </ul>

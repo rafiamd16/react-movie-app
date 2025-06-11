@@ -1,22 +1,30 @@
 import { NavLink } from 'react-router'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, type FC } from 'react'
 import Button from '../Elements/Button/Index'
+import type { User } from '../../types/user'
 
-const Profile = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+interface Props {
+  currentUser: User
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>
+}
+
+const Profile: FC<Props> = ({ currentUser, setCurrentUser }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleLogout = () => {
+    setCurrentUser(null)
+  }
+
+  if (!currentUser) return null
 
   const handleClick = () => {
     setIsOpen((prevState) => !prevState)
   }
 
   return (
-    <Button
-      type='button'
-      onClick={handleClick}
-      classname='relative flex items-center gap-1 md:gap-2'
-    >
-      <img src='/profile.png' alt='image' className='w-5 h-5 rounded-full md:w-10 md:h-10' />
+    <div onClick={handleClick} className='relative flex items-center gap-1 md:gap-2'>
+      <img src={currentUser?.avatar} alt='image' className='w-5 h-5 rounded-full md:w-10 md:h-10' />
       <svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'>
         <path
           d='M0.94 0.726562L4 3.7799L7.06 0.726562L8 1.66656L4 5.66656L0 1.66656L0.94 0.726562Z'
@@ -33,7 +41,7 @@ const Profile = () => {
         )}
       >
         <NavLink
-          to=''
+          to='/profile'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato md:text-sm flex items-center font-bold'
@@ -52,7 +60,7 @@ const Profile = () => {
           Profil Saya
         </NavLink>
         <NavLink
-          to='register'
+          to='/berlangganan'
           className={({ isActive }) =>
             isActive
               ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
@@ -70,13 +78,10 @@ const Profile = () => {
           </svg>
           Ubah Premium
         </NavLink>
-        <NavLink
-          to='login'
-          className={({ isActive }) =>
-            isActive
-              ? 'text-[#3254FF] py-2 px-3 gap-1.5 text-[10px] font-lato font-bold md:text-sm flex items-center'
-              : 'flex items-center py-2 px-3 gap-1.5 text-[10px] font-lato text-white font-medium md:text-sm hover:text-[#3254FF] transition-all'
-          }
+        <Button
+          onClick={handleLogout}
+          type='button'
+          classname='py-2 px-3 gap-1.5 text-[10px] font-lato text-white font-medium md:text-sm hover:text-[#3254FF] transition-all flex items-center cursor-pointer'
         >
           <svg
             width='12'
@@ -88,9 +93,9 @@ const Profile = () => {
             <path d='M10.6667 0H1.33333C0.593333 0 0 0.593333 0 1.33333V4H1.33333V1.33333H10.6667V10.6667H1.33333V8H0V10.6667C0 11.0203 0.140476 11.3594 0.390524 11.6095C0.640573 11.8595 0.979711 12 1.33333 12H10.6667C11.0203 12 11.3594 11.8595 11.6095 11.6095C11.8595 11.3594 12 11.0203 12 10.6667V1.33333C12 0.593333 11.4 0 10.6667 0ZM4.72 8.38667L5.66667 9.33333L9 6L5.66667 2.66667L4.72 3.60667L6.44667 5.33333H0V6.66667H6.44667L4.72 8.38667Z' />
           </svg>
           Keluar
-        </NavLink>
+        </Button>
       </nav>
-    </Button>
+    </div>
   )
 }
 
